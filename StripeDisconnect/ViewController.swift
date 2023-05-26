@@ -9,13 +9,18 @@
 //TODO: To run it, first set the URL for your Stripe Token Server here:
 let stripeTokenServerURL = "YOUR TOKEN SERVER URL"
 
+//TODO: Also, in this example implementation, it is assumed that the response to that URL will be a json-formatted data file including this property:
+let secretKeyProperty = "secret"
+
+// You may need to edit the function fetchConnectionToken() below to conform to your own Stripe implementation.
+
 // When run on real iOS hardware with a live Stripe Bluetooth reader
 // in proximity, this app will discover the reader, connect to the reader,
 // disconnect from the reader, and then discover it again, in a loop.
 // [Note that any errors in interacting with the reader will halt the app.]
 
 // To see this behavior, set this constant:
-let simulateReaders: Bool = false
+//let simulateReaders: Bool = false
 
 // When run using the StripeTerminal reader simulator, the method
 // Terminal.shared.disconnectReader completes without error, but the
@@ -25,7 +30,7 @@ let simulateReaders: Bool = false
 /* Error Domain=com.stripe-terminal Code=1110 "Already connected to a reader. Disconnect from the reader, or power it off before trying again." UserInfo={NSLocalizedDescription=Already connected to a reader. Disconnect from the reader, or power it off before trying again., com.stripe-terminal:Message=Already connected to a reader. Disconnect from the reader, or power it off before trying again.} */
 
 // To see that behavior, set this constant:
-//let simulateReaders: Bool = true
+let simulateReaders: Bool = true
 
 import UIKit
 import StripeTerminal
@@ -148,7 +153,7 @@ public class StripeAPIClient: ConnectionTokenProvider {
             data, response, error in
             guard data != nil,
                   let json = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any],
-                  let secret = json["secret"] as? String else {
+                  let secret = json[secretKeyProperty] as? String else {
                 print ("ERROR! IMPLEMENTATION ERROR: fetchConnectionToken failed")
                 return
             }
