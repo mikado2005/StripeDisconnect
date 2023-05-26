@@ -13,7 +13,23 @@
 		37A557832A20F7200039E569 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A557812A20F7200039E569 /* Main.storyboard */; };
 		37A557852A20F7230039E569 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37A557842A20F7230039E569 /* Assets.xcassets */; };
 		37A557882A20F7230039E569 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A557862A20F7230039E569 /* LaunchScreen.storyboard */; };
+		37A557912A20F7AC0039E569 /* StripeTerminal.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A557902A20F7AC0039E569 /* StripeTerminal.xcframework */; };
+		37A557922A20F7AC0039E569 /* StripeTerminal.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 37A557902A20F7AC0039E569 /* StripeTerminal.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		37A557932A20F7AC0039E569 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				37A557922A20F7AC0039E569 /* StripeTerminal.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		37A557782A20F7200039E569 /* StripeDisconnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StripeDisconnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +40,7 @@
 		37A557842A20F7230039E569 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37A557872A20F7230039E569 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37A557892A20F7230039E569 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37A557902A20F7AC0039E569 /* StripeTerminal.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = StripeTerminal.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37A557912A20F7AC0039E569 /* StripeTerminal.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +60,7 @@
 			children = (
 				37A5577A2A20F7200039E569 /* StripeDisconnect */,
 				37A557792A20F7200039E569 /* Products */,
+				37A5578F2A20F7AC0039E569 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +86,14 @@
 			path = StripeDisconnect;
 			sourceTree = "<group>";
 		};
+		37A5578F2A20F7AC0039E569 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				37A557902A20F7AC0039E569 /* StripeTerminal.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,6 +104,7 @@
 				37A557742A20F7200039E569 /* Sources */,
 				37A557752A20F7200039E569 /* Frameworks */,
 				37A557762A20F7200039E569 /* Resources */,
+				37A557932A20F7AC0039E569 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
