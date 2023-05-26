@@ -1,22 +1,42 @@
-//
-//  ViewController.swift
 //  StripeDisconnect
 //
-//  Created by Gregory Anderson on 5/26/23.
+//  Created by Gregory Anderson (greg@planetbeagle.com) on 5/26/23.
 //
+
+// This app demonstrates an apparent bug in StripeTerminal v2.20.2
+// involving the method Terminal.shared.disconnectReader
+
+//TODO: To run it, first set the URL for your Stripe Token Server here:
+let stripeTokenServerURL = "YOUR TOKEN SERVER URL"
+
+// When run on real iOS hardware with a live Stripe Bluetooth reader
+// in proximity, this app will discover the reader, connect to the reader,
+// disconnect from the reader, and then discover it again, in a loop.
+// [Note that any errors in interacting with the reader will halt the app.]
+
+// To see this behavior, set this constant:
+let simulateReaders: Bool = false
+
+// When run using the StripeTerminal reader simulator, the method
+// Terminal.shared.disconnectReader completes without error, but the
+// Terminal object is still connected to the reader.  Hence, the following
+// call to method Terminal.shared.discoverReaders fails with the error
+// message:
+/* Error Domain=com.stripe-terminal Code=1110 "Already connected to a reader. Disconnect from the reader, or power it off before trying again." UserInfo={NSLocalizedDescription=Already connected to a reader. Disconnect from the reader, or power it off before trying again., com.stripe-terminal:Message=Already connected to a reader. Disconnect from the reader, or power it off before trying again.} */
+
+// To see that behavior, set this constant:
+//let simulateReaders: Bool = true
 
 import UIKit
 import StripeTerminal
 
 class ViewController: UIViewController {
-    var simulateReaders: Bool = true
     var connectedReader: Reader?
     var readerLocationID = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Terminal.setTokenProvider(StripeAPIClient.shared)
-        
         Task {
             guard
                 let result:(locations: [Location], Bool) = try? await Terminal.shared.listLocations(parameters: nil),
@@ -55,7 +75,8 @@ class ViewController: UIViewController {
                     exit(-6)
                 } else {
                     print("disconnectReader -- SUCCESS")
-                    print ("StripeTerminal status is \(self.describeTerminalStatus())")
+                    print("StripeTerminal status is \(self.describeTerminalStatus())")
+                    print("StripeTerminal connected reader is \(Terminal.shared.connectedReader?.serialNumber ?? "<NONE>")")
                     print("Discovering readers again")
                     self.discoverReaders()
                 }
@@ -112,20 +133,18 @@ extension ViewController: BluetoothReaderDelegate {
     func reader(_ reader: Reader, didRequestReaderInput inputOptions: ReaderInputOptions = []) {}
     func reader(_ reader: Reader, didRequestReaderDisplayMessage displayMessage: ReaderDisplayMessage) {}
 }
+
 //MARK: ConnectionTokenProvider
 public class StripeAPIClient: ConnectionTokenProvider {
-//    let url = "YOUR TOKEN SERVER URL" // TODO: SET THIS URL
-    let url = "https://harriscruises.starboardsuite.com/stripe-terminal/v1/get-connection-token"
-
     public static let shared = StripeAPIClient()
     
     public func fetchConnectionToken(_ completion: @escaping ConnectionTokenCompletionBlock) {
-        if url == "YOUR TOKEN SERVER URL" {
-            print ("ERROR! IMPLEMENTATION ERROR: You need to set the URL for obtaining your Stripe API token in StripeAPIClient")
+        if stripeTokenServerURL.isEmpty || stripeTokenServerURL == "YOUR TOKEN SERVER URL" {
+            print ("ERROR! IMPLEMENTATION ERROR: You need to set the URL for obtaining your Stripe API token in let stripeTokenServerURL")
             exit(-1)
         }
         let session = URLSession(configuration: URLSessionConfiguration.default)
-        let task = session.dataTask(with: URLRequest(url: URL(string: url)!)) {
+        let task = session.dataTask(with: URLRequest(url: URL(string: stripeTokenServerURL)!)) {
             data, response, error in
             guard data != nil,
                   let json = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any],
@@ -139,7 +158,7 @@ public class StripeAPIClient: ConnectionTokenProvider {
     }
 }
 
-//MARK AppDelegate
+//MARK: AppDelegate
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{
     var window: UIWindow?
@@ -149,20 +168,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         window.makeKeyAndVisible()
         self.window = window
         return true
-    }
-
-    // MARK: UISceneSession Lifecycle
-
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 }
 
