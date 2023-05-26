@@ -7,12 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		37A5577C2A20F7200039E569 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A5577B2A20F7200039E569 /* AppDelegate.swift */; };
-		37A5577E2A20F7200039E569 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A5577D2A20F7200039E569 /* SceneDelegate.swift */; };
 		37A557802A20F7200039E569 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A5577F2A20F7200039E569 /* ViewController.swift */; };
-		37A557832A20F7200039E569 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A557812A20F7200039E569 /* Main.storyboard */; };
 		37A557852A20F7230039E569 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37A557842A20F7230039E569 /* Assets.xcassets */; };
-		37A557882A20F7230039E569 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A557862A20F7230039E569 /* LaunchScreen.storyboard */; };
 		37A557912A20F7AC0039E569 /* StripeTerminal.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A557902A20F7AC0039E569 /* StripeTerminal.xcframework */; };
 		37A557922A20F7AC0039E569 /* StripeTerminal.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 37A557902A20F7AC0039E569 /* StripeTerminal.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -33,12 +29,8 @@
 
 /* Begin PBXFileReference section */
 		37A557782A20F7200039E569 /* StripeDisconnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StripeDisconnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		37A5577B2A20F7200039E569 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		37A5577D2A20F7200039E569 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		37A5577F2A20F7200039E569 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		37A557822A20F7200039E569 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		37A557842A20F7230039E569 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		37A557872A20F7230039E569 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37A557892A20F7230039E569 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37A557902A20F7AC0039E569 /* StripeTerminal.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = StripeTerminal.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,12 +67,8 @@
 		37A5577A2A20F7200039E569 /* StripeDisconnect */ = {
 			isa = PBXGroup;
 			children = (
-				37A5577B2A20F7200039E569 /* AppDelegate.swift */,
-				37A5577D2A20F7200039E569 /* SceneDelegate.swift */,
 				37A5577F2A20F7200039E569 /* ViewController.swift */,
-				37A557812A20F7200039E569 /* Main.storyboard */,
 				37A557842A20F7230039E569 /* Assets.xcassets */,
-				37A557862A20F7230039E569 /* LaunchScreen.storyboard */,
 				37A557892A20F7230039E569 /* Info.plist */,
 			);
 			path = StripeDisconnect;
@@ -153,9 +141,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37A557882A20F7230039E569 /* LaunchScreen.storyboard in Resources */,
 				37A557852A20F7230039E569 /* Assets.xcassets in Resources */,
-				37A557832A20F7200039E569 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,31 +153,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				37A557802A20F7200039E569 /* ViewController.swift in Sources */,
-				37A5577C2A20F7200039E569 /* AppDelegate.swift in Sources */,
-				37A5577E2A20F7200039E569 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		37A557812A20F7200039E569 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				37A557822A20F7200039E569 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		37A557862A20F7230039E569 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				37A557872A20F7230039E569 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		37A5578A2A20F7230039E569 /* Debug */ = {
@@ -318,9 +283,10 @@
 				DEVELOPMENT_TEAM = 9DAT7A9Z28;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StripeDisconnect/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -346,9 +312,10 @@
 				DEVELOPMENT_TEAM = 9DAT7A9Z28;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StripeDisconnect/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
